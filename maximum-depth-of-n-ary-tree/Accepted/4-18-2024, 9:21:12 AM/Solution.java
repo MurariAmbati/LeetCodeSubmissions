@@ -1,0 +1,36 @@
+// https://leetcode.com/problems/maximum-depth-of-n-ary-tree
+
+/*
+// Definition for a Node.
+class Node {
+    public int val;
+    public List<Node> children;
+
+    public Node() {}
+
+    public Node(int _val) {
+        val = _val;
+    }
+
+    public Node(int _val, List<Node> _children) {
+        val = _val;
+        children = _children;
+    }
+};
+*/
+
+class Solution {
+    public int maxDepth(Node root) {
+        if (root == null) {
+            return 0; // Base case: empty tree has depth 0
+        }
+        
+        int maxChildDepth = 0;
+        for (Node child : root.children) {
+            int childDepth = maxDepth(child); // Recursively compute depth of each child
+            maxChildDepth = Math.max(maxChildDepth, childDepth); // Update maximum depth encountered so far
+        }
+        
+        return maxChildDepth + 1; // Add 1 to account for the current node
+    }
+}
