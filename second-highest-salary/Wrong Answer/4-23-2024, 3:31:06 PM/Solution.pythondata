@@ -1,0 +1,17 @@
+// https://leetcode.com/problems/second-highest-salary
+
+import pandas as pd
+
+def second_highest_salary(employee_df):
+    # Sort the DataFrame by salary in descending order
+    sorted_df = employee_df.sort_values(by='salary', ascending=False)
+
+    # Get the second highest salary (if exists)
+    second_highest = sorted_df['salary'].iloc[1] if len(sorted_df) > 1 else None
+
+    # Create a DataFrame with the result
+    result_df = pd.DataFrame({'SecondHighestSalary': [second_highest]})
+
+    return result_df
+
+
